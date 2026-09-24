@@ -48,11 +48,21 @@
       preloader.innerHTML = `
         <div class="preloader-backdrop"></div>
         <div class="preloader-content">
-          <div class="preloader-logo-card">
+          <div class="dribbble-logo-stage">
+            <div class="orbital-ring orbital-ring-outer"></div>
+            <div class="orbital-ring orbital-ring-inner">
+              <div class="orbital-satellite"></div>
+            </div>
             <div class="preloader-logo-glow"></div>
-            <div class="preloader-logo-frame">
-              <img src="assets/valigo-logo.png" alt="VALIGO - Keep It Safe, Enjoy The Way" class="preloader-logo-img">
-              <div class="preloader-logo-sheen"></div>
+            <div class="dribbble-logo-card" id="logoCardContainer">
+              <div class="logo-layer logo-layer-base">
+                <img src="assets/valigo-logo.png" alt="VALIGO Silhouette" class="preloader-logo-img">
+              </div>
+              <div class="logo-layer logo-layer-fill" id="logoLayerFill">
+                <img src="assets/valigo-logo.png" alt="VALIGO Full Color" class="preloader-logo-img">
+              </div>
+              <div class="logo-laser-line" id="logoLaserLine"></div>
+              <div class="preloader-logo-sheen" id="logoSheen"></div>
             </div>
           </div>
           <div class="preloader-brand-sub">Smart Baggage Mobility • Keep It Safe - Enjoy The Way</div>
@@ -67,7 +77,7 @@
             </div>
             <div class="preloader-status-row">
               <span class="preloader-status-text" id="preloaderStatusText">Đang khởi tạo hệ thống...</span>
-              <span class="preloader-percent" id="preloaderPercent">0%</span>
+              <span class="preloader-percent" id="preloaderPercent">[ 000% ]</span>
             </div>
           </div>
           <div class="preloader-security-badge">
@@ -85,6 +95,9 @@
     const percentEl = document.getElementById('preloaderPercent');
     const statusTextEl = document.getElementById('preloaderStatusText');
     const vanMarker = document.getElementById('preloaderVanMarker');
+    const logoSheen = document.getElementById('logoSheen');
+    const logoCard = document.getElementById('logoCardContainer');
+    const laserLine = document.getElementById('logoLaserLine');
 
     const statusSteps = [
       { at: 10, text: 'Đang kết nối hệ thống giao nhận VALIGO...' },
@@ -95,7 +108,7 @@
     ];
 
     let currentProgress = 0;
-    const targetDuration = 1100; // Smooth 1.1s duration for crisp cinematic reveal
+    const targetDuration = 1250; // Smooth 1.25s duration for crisp Dribbble reveal
     const startTime = performance.now();
 
     function updateProgress(now) {
@@ -106,8 +119,11 @@
       const easeVal = 1 - Math.pow(1 - progressFraction, 3);
       currentProgress = Math.min(Math.round(easeVal * 100), 100);
 
+      if (preloader) {
+        preloader.style.setProperty('--load-progress', currentProgress + '%');
+      }
       if (progressBar) progressBar.style.width = currentProgress + '%';
-      if (percentEl) percentEl.textContent = currentProgress + '%';
+      if (percentEl) percentEl.textContent = `[ ${currentProgress.toString().padStart(3, '0')}% ]`;
       if (vanMarker) vanMarker.style.left = Math.min(currentProgress * 0.95, 92) + '%';
 
       // Update status text
@@ -120,6 +136,12 @@
         }
       }
 
+      if (currentProgress >= 100) {
+        if (logoSheen && !logoSheen.classList.contains('active')) logoSheen.classList.add('active');
+        if (logoCard && !logoCard.classList.contains('pop-done')) logoCard.classList.add('pop-done');
+        if (laserLine && !laserLine.classList.contains('hidden')) laserLine.classList.add('hidden');
+      }
+
       if (progressFraction < 1) {
         requestAnimationFrame(updateProgress);
       } else {
@@ -130,7 +152,7 @@
           }
           // Fire opening hero animation right as preloader lifts
           initOpeningAnimation();
-        }, 180);
+        }, 220);
       }
     }
 
@@ -140,8 +162,12 @@
     window.addEventListener('beforeunload', () => {
       if (preloader) {
         preloader.classList.remove('loaded');
+        preloader.style.setProperty('--load-progress', '0%');
         if (progressBar) progressBar.style.width = '0%';
-        if (percentEl) percentEl.textContent = '0%';
+        if (percentEl) percentEl.textContent = '[ 000% ]';
+        if (logoSheen) logoSheen.classList.remove('active');
+        if (logoCard) logoCard.classList.remove('pop-done');
+        if (laserLine) laserLine.classList.remove('hidden');
       }
     });
   }
@@ -154,17 +180,25 @@
       return;
     }
     preloader.classList.remove('loaded');
+    preloader.style.setProperty('--load-progress', '0%');
     const progressBar = document.getElementById('preloaderProgressBar');
     const percentEl = document.getElementById('preloaderPercent');
     const statusTextEl = document.getElementById('preloaderStatusText');
     const vanMarker = document.getElementById('preloaderVanMarker');
+    const logoSheen = document.getElementById('logoSheen');
+    const logoCard = document.getElementById('logoCardContainer');
+    const laserLine = document.getElementById('logoLaserLine');
+
     if (progressBar) progressBar.style.width = '0%';
-    if (percentEl) percentEl.textContent = '0%';
-    if (statusTextEl) statusTextEl.textContent = 'Đang tải lại trang...';
+    if (percentEl) percentEl.textContent = '[ 000% ]';
+    if (statusTextEl) statusTextEl.textContent = 'Đang đồng bộ hóa hệ thống...';
     if (vanMarker) vanMarker.style.left = '0%';
+    if (logoSheen) logoSheen.classList.remove('active');
+    if (logoCard) logoCard.classList.remove('pop-done');
+    if (laserLine) laserLine.classList.remove('hidden');
 
     let currentProgress = 0;
-    const targetDuration = 700;
+    const targetDuration = 1250;
     const startTime = performance.now();
 
     function updateProgress(now) {
@@ -173,9 +207,16 @@
       const easeVal = 1 - Math.pow(1 - progressFraction, 3);
       currentProgress = Math.min(Math.round(easeVal * 100), 100);
 
+      preloader.style.setProperty('--load-progress', currentProgress + '%');
       if (progressBar) progressBar.style.width = currentProgress + '%';
-      if (percentEl) percentEl.textContent = currentProgress + '%';
+      if (percentEl) percentEl.textContent = `[ ${currentProgress.toString().padStart(3, '0')}% ]`;
       if (vanMarker) vanMarker.style.left = Math.min(currentProgress * 0.95, 92) + '%';
+
+      if (currentProgress >= 100) {
+        if (logoSheen) logoSheen.classList.add('active');
+        if (logoCard) logoCard.classList.add('pop-done');
+        if (laserLine) laserLine.classList.add('hidden');
+      }
 
       if (progressFraction < 1) {
         requestAnimationFrame(updateProgress);
@@ -184,7 +225,7 @@
           preloader.classList.add('loaded');
           initOpeningAnimation();
           if (typeof callback === 'function') callback();
-        }, 150);
+        }, 220);
       }
     }
 

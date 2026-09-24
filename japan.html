@@ -63,32 +63,51 @@
 </head>
 <body>
 
-  <!-- VALIGO Cinematic Luxury Page Preloader & Refresh Loading Screen -->
+  <!-- VALIGO Cinematic Dribbble-Style Logo Loader Animation -->
   <div id="valigo-preloader" class="valigo-preloader" aria-hidden="true">
     <div class="preloader-backdrop"></div>
     <div class="preloader-content">
-      <div class="preloader-logo-card">
+      
+      <!-- Central Orbital Gyroscope & Logo Stage -->
+      <div class="dribbble-logo-stage">
+        <div class="orbital-ring orbital-ring-outer"></div>
+        <div class="orbital-ring orbital-ring-inner">
+          <div class="orbital-satellite"></div>
+        </div>
         <div class="preloader-logo-glow"></div>
-        <div class="preloader-logo-frame">
-          <img src="assets/valigo-logo.png" alt="VALIGO - Keep It Safe, Enjoy The Way" class="preloader-logo-img">
-          <div class="preloader-logo-sheen"></div>
+        <div class="dribbble-logo-card" id="logoCardContainer">
+          <div class="logo-layer logo-layer-base">
+            <img src="assets/valigo-logo.png" alt="VALIGO Silhouette" class="preloader-logo-img">
+          </div>
+          <div class="logo-layer logo-layer-fill" id="logoLayerFill">
+            <img src="assets/valigo-logo.png" alt="VALIGO Full Color" class="preloader-logo-img">
+          </div>
+          <div class="logo-laser-line" id="logoLaserLine"></div>
+          <div class="preloader-logo-sheen" id="logoSheen"></div>
         </div>
       </div>
+
       <div class="preloader-brand-sub">Smart Baggage Mobility • Tuyến Nhật Bản (Tokyo - Kyoto - Osaka)</div>
+      
+      <!-- Animated Route Track with Bullet Train Marker -->
       <div class="preloader-route-track">
         <div class="preloader-route-line"></div>
         <div class="preloader-van-marker" id="preloaderVanMarker">🚅</div>
         <div class="preloader-dest-marker">📍</div>
       </div>
+      
+      <!-- Digital Monospace Progress & Status -->
       <div class="preloader-progress-box">
         <div class="preloader-progress-track">
           <div class="preloader-progress-bar" id="preloaderProgressBar"></div>
         </div>
         <div class="preloader-status-row">
           <span class="preloader-status-text" id="preloaderStatusText">Đang kết nối hệ thống Yamato & Shinkansen...</span>
-          <span class="preloader-percent" id="preloaderPercent">0%</span>
+          <span class="preloader-percent" id="preloaderPercent">[ 000% ]</span>
         </div>
       </div>
+      
+      <!-- Security Trust Badge -->
       <div class="preloader-security-badge">
         <span class="preloader-pulse-dot"></span>
         <span>Hợp Tác Yamato Transport Kuroneko • Bảo Hiểm ¥1,000,000</span>
