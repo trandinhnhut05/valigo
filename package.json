@@ -2,7 +2,6 @@
   "name": "valigo-prototype",
   "version": "1.0.0",
   "description": "VALIGO - Smart Luggage Delivery & Digital Chain of Custody Web Application",
-  "main": "server.js",
   "scripts": {
     "start": "node server.js",
     "dev": "node server.js",
