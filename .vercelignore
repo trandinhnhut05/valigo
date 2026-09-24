@@ -1,7 +1,0 @@
-# Vercel Ignore
-# Exclude local Node.js dev server and IDE config so Vercel treats this purely as a Static Website
-server.js
-start.bat
-.agent/
-.agents/
-antigravity-skills/
