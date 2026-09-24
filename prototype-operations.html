@@ -1,0 +1,1024 @@
+<!--
+  Copyright (c) 2026 VALIGO Platform
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<!DOCTYPE html>
+<html lang="vi" prefix="og: https://ogp.me/ns#">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VALIGO | Nền Tảng Giao Nhận & Lưu Trữ Hành Lý Thông Minh Việt Nam</title>
+  <meta name="description" content="Du lịch nhẹ tênh khắp Việt Nam từ 99.000đ. Giao nhận hành lý tận phòng khách sạn, sân bay Nội Bài, Tân Sơn Nhất, Đà Nẵng, Hội An, Phú Quốc. Niêm phong bảo mật, bảo hiểm 25 triệu đồng.">
+  <meta name="keywords" content="giao hành lý, gửi hành lý sân bay việt nam, giao hành lý đà nẵng hội an, chuyển vali hà nội sài gòn, valigo, smart luggage delivery">
+  <meta name="author" content="VALIGO Việt Nam">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="http://localhost:8080/index.html">
+
+  <!-- Open Graph / Zalo / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="http://localhost:8080/index.html">
+  <meta property="og:title" content="VALIGO - Dịch Vụ Giao Nhận & Niêm Phong Hành Lý Thông Minh">
+  <meta property="og:description" content="Nhận hành lý tại sân bay, giao tận resort/khách sạn khắp Việt Nam. Tem niêm phong điện tử và bảo hiểm 25.000.000 VNĐ.">
+  <meta property="og:image" content="assets/vietnam-hero.jpg">
+  <meta property="og:locale" content="vi_VN">
+  <meta property="og:site_name" content="VALIGO">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="VALIGO Việt Nam | Nền Tảng Giao Nhận Hành Lý Thông Minh">
+  <meta name="twitter:description" content="Du lịch rảnh tay giữa Hà Nội, Đà Nẵng, Hội An, Sài Gòn, Phú Quốc.">
+  <meta name="twitter:image" content="assets/vietnam-hero.jpg">
+
+  <!-- Schema.org JSON-LD (Chuẩn SEO) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TravelAgency",
+    "name": "VALIGO Việt Nam",
+    "url": "http://localhost:8080/index.html",
+    "image": "http://localhost:8080/assets/vietnam-hero.jpg",
+    "priceRange": "99.000 VND - 350.000 VND",
+    "telephone": "+84-905-123-456",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Đà Nẵng",
+      "addressRegion": "Miền Trung",
+      "addressCountry": "VN"
+    },
+    "description": "Nền tảng giao nhận và lưu trữ hành lý thông minh số 1 tại Việt Nam."
+  }
+  </script>
+
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/preloader.css">
+</head>
+<body>
+
+  <!-- VALIGO Cinematic Luxury Page Preloader & Refresh Loading Screen -->
+  <div id="valigo-preloader" class="valigo-preloader" aria-hidden="true">
+    <div class="preloader-backdrop"></div>
+    <div class="preloader-content">
+      <div class="preloader-emblem-wrap">
+        <div class="preloader-ring preloader-ring-outer"></div>
+        <div class="preloader-ring preloader-ring-inner"></div>
+        <div class="preloader-badge">
+          <span class="preloader-logo-v">V</span>
+          <span class="preloader-luggage-icon">🧳</span>
+        </div>
+      </div>
+      <div class="preloader-brand">
+        <div class="preloader-brand-title">VALIGO</div>
+        <div class="preloader-brand-sub">Smart Baggage Mobility • Việt Nam</div>
+      </div>
+      <div class="preloader-route-track">
+        <div class="preloader-route-line"></div>
+        <div class="preloader-van-marker" id="preloaderVanMarker">🚐</div>
+        <div class="preloader-dest-marker">📍</div>
+      </div>
+      <div class="preloader-progress-box">
+        <div class="preloader-progress-track">
+          <div class="preloader-progress-bar" id="preloaderProgressBar"></div>
+        </div>
+        <div class="preloader-status-row">
+          <span class="preloader-status-text" id="preloaderStatusText">Đang khởi tạo hệ thống...</span>
+          <span class="preloader-percent" id="preloaderPercent">0%</span>
+        </div>
+      </div>
+      <div class="preloader-security-badge">
+        <span class="preloader-pulse-dot"></span>
+        <span>Mạng Lưới Sân Bay & Niêm Phong Số Bảo Mật</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Top Global Navigation Bar -->
+  <header class="top-nav">
+    <div class="top-nav-inner">
+      <div class="brand-container" id="navBrandLogo" title="VALIGO Trang Chủ">
+        <div class="brand-logo-badge">V</div>
+        <div class="brand-text">
+          <span class="brand-logo-text">VALIGO</span>
+          <span class="brand-tagline">Smart Baggage Mobility VN</span>
+        </div>
+      </div>
+
+      <!-- Role Switcher Pills -->
+      <nav class="role-switcher" aria-label="Bộ Chuyển Đổi Vai Trò">
+        <button class="role-tab active" data-role="customer" id="btnRoleCustomer">
+          <span>🧳 Khách Hàng</span>
+        </button>
+        <button class="role-tab" data-role="driver" id="btnRoleDriver">
+          <span>📱 App Tài Xế</span>
+          <span class="badge">1 Nhiệm vụ</span>
+        </button>
+        <button class="role-tab" data-role="locker" id="btnRoleLocker">
+          <span>🔐 Tủ Khóa Thông Minh</span>
+          <span class="badge">Trạm Sân Bay</span>
+        </button>
+        <button class="role-tab" data-role="admin" id="btnRoleAdmin">
+          <span>📊 Quản Trị Admin</span>
+        </button>
+      </nav>
+
+      <!-- Nav Quick Actions -->
+      <div class="nav-actions">
+        <a href="vietnam.html" class="btn-secondary" style="background: rgba(69, 76, 237, 0.25); border: 1px solid #6366f1; color: #c7d2fe; font-size: 0.8rem; text-decoration: none; display: flex; align-items: center; gap: 0.4rem;">
+          🇻🇳 Bản Trang Đích Toàn Quốc
+        </a>
+        <button class="demo-seed-btn" id="resetDemoStateBtn" title="Khôi phục dữ liệu mẫu ban đầu">
+          ↺ Reset Dữ Liệu
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main View Container -->
+  <main class="main-wrapper">
+
+    <!-- ====================================================================
+         1. CUSTOMER PORTAL VIEW
+         ==================================================================== -->
+    <section class="app-view active" id="view-customer">
+      <!-- Hero Banner -->
+      <div class="hero-banner">
+        <img src="assets/vietnam-hero.jpg" alt="Dịch vụ giao nhận hành lý thông minh VALIGO tại Hội An Việt Nam" class="hero-banner-bg" width="1280" height="720">
+        <div class="hero-content">
+          <div class="hero-pill">✨ Dịch Vụ Hành Lý Sân Bay & Resort Đẳng Cấp</div>
+          <h1 class="hero-title">Giao Nhận Hành Lý Thông Minh Việt Nam. <span>Du Lịch Rảnh Tay.</span></h1>
+          <p class="hero-desc">
+            Chúng tôi nhận hành lý tại sảnh khách sạn hoặc sân bay và giao thẳng về phòng resort của bạn với tem niêm phong điện tử và bảo hiểm 25.000.000 VNĐ.
+          </p>
+          <div class="hero-stats-row">
+            <div class="hero-stat-item">
+              <span class="hero-stat-num">99.6%</span>
+              <span class="hero-stat-label">Đúng Hẹn Tuyệt Đối</span>
+            </div>
+            <div class="hero-stat-item">
+              <span class="hero-stat-num">25 Triệu đ</span>
+              <span class="hero-stat-label">Bảo Hiểm ValiShield</span>
+            </div>
+            <div class="hero-stat-item">
+              <span class="hero-stat-num">24/7</span>
+              <span class="hero-stat-label">Mạng Lưới Tủ Khóa</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Customer Subnav -->
+      <div class="customer-subnav">
+        <button class="subnav-btn active" data-tab="booking" id="navBookingTab">
+          <span>📅 Đặt Dịch Vụ & Xếp Lịch Thông Minh</span>
+        </button>
+        <button class="subnav-btn" data-tab="tracking" id="navTrackingTab">
+          <span>📍 Theo Dõi Lộ Trình & Tem Niêm Phong Số</span>
+        </button>
+      </div>
+
+      <!-- TAB A: ONLINE BOOKING & ITINERARY SCHEDULER -->
+      <div id="customerBookingSection">
+        <div class="booking-grid">
+          
+          <!-- Booking Form Card -->
+          <div class="booking-card">
+            
+            <!-- Itinerary-Based Smart Scheduling Assistant -->
+            <div class="itinerary-recommender">
+              <div class="itinerary-header">
+                <span class="itinerary-title">
+                  🧭 Trợ Lý Xếp Lịch Theo Hành Trình Du Lịch (AI Route Engine)
+                </span>
+                <span style="font-size: 0.72rem; color: #94a3b8; font-family: var(--font-mono);">Thuật Toán Tối Ưu Lộ Trình</span>
+              </div>
+              <p style="font-size: 0.8rem; color: #cbd5e1; margin-bottom: 0.85rem;">
+                Nhập giờ trả phòng và giờ bay để hệ thống tự động tính toán khung giờ lấy và giao hành lý tối ưu, giúp bạn đi chơi trọn vẹn mà không cần chờ đợi.
+              </p>
+              <div class="itinerary-inputs">
+                <div class="form-group" style="margin-bottom:0;">
+                  <label class="form-label" for="itinCheckoutTime">Giờ Trả Phòng Khách Sạn</label>
+                  <input type="time" id="itinCheckoutTime" class="form-control" value="11:00">
+                </div>
+                <div class="form-group" style="margin-bottom:0;">
+                  <label class="form-label" for="itinFlightTime">Giờ Bay / Lên Tàu</label>
+                  <input type="time" id="itinFlightTime" class="form-control" value="19:30">
+                </div>
+                <button class="btn-secondary" id="calcItineraryBtn" style="height: 42px; background: var(--accent-cyan); color: #000; font-weight: 700;">
+                  ⚡ Tự Động Tính
+                </button>
+              </div>
+              <div class="itinerary-result" id="itineraryResultBox" style="display:none;">
+                <!-- Dynamically populated -->
+              </div>
+            </div>
+
+            <!-- Route & Locations -->
+            <div class="section-header">
+              <h3 class="section-title">1. Lộ Trình & Điểm Hẹn</h3>
+              <span class="section-badge">Bước 1 / 3</span>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="bookingPickupLocation">Điểm Nhận Hành Lý (Pickup)</label>
+                <select id="bookingPickupLocation" class="form-control">
+                  <option value="InterContinental Danang Sun Peninsula Resort">InterContinental Danang Sun Peninsula</option>
+                  <option value="Sheraton Grand Da Nang Resort & Spa">Sheraton Grand Da Nang Resort</option>
+                  <option value="Pullman Danang Beach Resort">Pullman Danang Beach Resort</option>
+                  <option value="Novotel Danang Premier Han River">Novotel Danang Premier Sông Hàn</option>
+                  <option value="Sân bay Quốc tế Đà Nẵng (DAD) - Ga Đến">Sân bay Đà Nẵng (Ga Đến T1/T2)</option>
+                  <option value="Sân bay Nội Bài (HAN) - Hà Nội">Sân bay Quốc tế Nội Bài (Hà Nội)</option>
+                  <option value="Sân bay Tân Sơn Nhất (SGN) - TP.HCM">Sân bay Tân Sơn Nhất (TP.HCM)</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="bookingDestination">Điểm Giao Hành Lý (Destination)</label>
+                <select id="bookingDestination" class="form-control">
+                  <option value="Sân bay Quốc tế Đà Nẵng (DAD) - Ga T2 Quốc Tế">Sân bay Quốc tế Đà Nẵng - Ga T2</option>
+                  <option value="Trạm Tủ Khóa ValiLocker - Ga Sân Bay T1">Trạm Tủ Khóa ValiLocker - Sân Bay T1 (24/7)</option>
+                  <option value="Resort Phố Cổ Hội An (Quảng Nam)">Resort Phố Cổ Hội An (Quảng Nam)</option>
+                  <option value="Hyatt Regency Danang Resort">Hyatt Regency Danang Resort</option>
+                  <option value="Khách sạn Phố Cổ Hà Nội (Hoàn Kiếm)">Khách sạn Phố Cổ Hà Nội (Hoàn Kiếm)</option>
+                  <option value="Khách sạn Quận 1 Bến Thành (TP.HCM)">Khách sạn Quận 1 Bến Thành (TP.HCM)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="bookingPickupTime">Khung Giờ Lấy Đồ</label>
+                <input type="text" id="bookingPickupTime" class="form-control" value="Hôm nay, 10:30" readonly>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="bookingDeliveryTime">Khung Giờ Giao Đồ</label>
+                <input type="text" id="bookingDeliveryTime" class="form-control" value="Hôm nay, 17:30" readonly>
+              </div>
+            </div>
+
+            <!-- Luggage Inventory -->
+            <div class="section-header" style="margin-top: 1.5rem;">
+              <h3 class="section-title">2. Danh Mục Kiện Hành Lý</h3>
+              <span class="section-badge">Bước 2 / 3</span>
+            </div>
+
+            <div class="luggage-selection-grid">
+              <div class="luggage-card">
+                <div class="luggage-icon">🧳</div>
+                <div class="luggage-info">
+                  <h4>Vali Xách Tay</h4>
+                  <p>Cỡ 20" • Dưới 7kg</p>
+                  <span class="luggage-price">80.000 đ</span>
+                </div>
+                <div class="counter-control" data-type="cabin">
+                  <button class="counter-btn btn-dec">-</button>
+                  <span class="counter-val">1</span>
+                  <button class="counter-btn btn-inc">+</button>
+                </div>
+              </div>
+
+              <div class="luggage-card">
+                <div class="luggage-icon">🧳</div>
+                <div class="luggage-info">
+                  <h4>Vali Ký Gửi</h4>
+                  <p>24" đến 26" • Dưới 23kg</p>
+                  <span class="luggage-price">120.000 đ</span>
+                </div>
+                <div class="counter-control" data-type="standard">
+                  <button class="counter-btn btn-dec">-</button>
+                  <span class="counter-val">1</span>
+                  <button class="counter-btn btn-inc">+</button>
+                </div>
+              </div>
+
+              <div class="luggage-card">
+                <div class="luggage-icon">🧳</div>
+                <div class="luggage-info">
+                  <h4>Vali Cỡ Lớn</h4>
+                  <p>28" đến 32" • Dưới 32kg</p>
+                  <span class="luggage-price">180.000 đ</span>
+                </div>
+                <div class="counter-control" data-type="large">
+                  <button class="counter-btn btn-dec">-</button>
+                  <span class="counter-val">0</span>
+                  <button class="counter-btn btn-inc">+</button>
+                </div>
+              </div>
+
+              <div class="luggage-card">
+                <div class="luggage-icon">🏌️</div>
+                <div class="luggage-info">
+                  <h4>Túi Golf / Đặc Biệt</h4>
+                  <p>Gậy golf, ván lướt, đồ dễ vỡ</p>
+                  <span class="luggage-price">220.000 đ</span>
+                </div>
+                <div class="counter-control" data-type="special">
+                  <button class="counter-btn btn-dec">-</button>
+                  <span class="counter-val">0</span>
+                  <button class="counter-btn btn-inc">+</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Flexible Delivery Options -->
+            <div class="section-header" style="margin-top: 1.5rem;">
+              <h3 class="section-title">3. Gói Giao Hàng Linh Hoạt</h3>
+              <span class="section-badge">Bước 3 / 3</span>
+            </div>
+
+            <div class="tier-selection-grid">
+              <div class="tier-card" data-tier="standard">
+                <span class="tier-badge standard">Tiết Kiệm</span>
+                <h4>Giao Tiêu Chuẩn</h4>
+                <p>Giao an toàn trước khung giờ check-in hoặc giờ bay của bạn.</p>
+                <div class="tier-price-tag">Đã Bao Gồm</div>
+              </div>
+
+              <div class="tier-card selected" data-tier="priority">
+                <span class="tier-badge priority">Phổ Biến Nhất</span>
+                <h4>Hỏa Tốc 2 Giờ</h4>
+                <p>Tài xế riêng điều phối giao thẳng trong 2 giờ. Ưu tiên kiểm định tem niêm phong.</p>
+                <div class="tier-price-tag">+60.000 đ</div>
+              </div>
+
+              <div class="tier-card" data-tier="scheduled">
+                <span class="tier-badge scheduled">Chính Xác</span>
+                <h4>Khung Giờ Hẹn</h4>
+                <p>Cam kết giao chuẩn xác trong khung giờ 30 phút theo yêu cầu.</p>
+                <div class="tier-price-tag">+30.000 đ</div>
+              </div>
+            </div>
+
+            <!-- Receiver Information -->
+            <div class="section-header" style="margin-top: 1.5rem;">
+              <h3 class="section-title">4. Thông Tin Người Nhận</h3>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="customerFullName">Họ và Tên</label>
+                <input type="text" id="customerFullName" class="form-control" value="Nguyễn Minh Tuấn">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="customerPhone">Số Điện Thoại (Zalo / SMS)</label>
+                <input type="tel" id="customerPhone" class="form-control" value="+84 905 123 456">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="customerEmail">Email Xác Nhận & Hóa Đơn</label>
+              <input type="email" id="customerEmail" class="form-control" value="tuan.nguyen@vietnamtravel.vn">
+            </div>
+
+          </div>
+
+          <!-- Sticky Order Summary Panel -->
+          <aside class="summary-card">
+            <h3 style="font-size: 1.2rem; margin-bottom: 1.25rem;">Chi Tiết Đơn Hàng</h3>
+            
+            <div class="summary-row">
+              <span>Kiện hành lý:</span>
+              <span id="summaryBagCount">2 Kiện</span>
+            </div>
+
+            <div class="summary-row">
+              <span>Cước phí kiện:</span>
+              <span id="summaryBagSubtotal">200.000 đ</span>
+            </div>
+
+            <div class="summary-row">
+              <span>Gói dịch vụ:</span>
+              <span id="summaryTierLabel">Hỏa Tốc 2 Giờ</span>
+            </div>
+
+            <div class="summary-row">
+              <span>Phụ phí gói:</span>
+              <span id="summaryTierPrice">+60.000 đ</span>
+            </div>
+
+            <div class="summary-row">
+              <span>Bảo hiểm ValiShield:</span>
+              <span id="summaryInsurancePrice">+25.000 đ</span>
+            </div>
+
+            <!-- Insurance Toggle -->
+            <label class="insurance-toggle">
+              <input type="checkbox" id="insuranceToggle" checked>
+              <div class="insurance-info">
+                <h5>🛡️ Bảo Hiểm ValiShield 25.000.000 VNĐ</h5>
+                <p>Bảo vệ toàn diện trước mọi rủi ro thất lạc, trầy xước và mở trộm với mức miễn thường 0 đồng.</p>
+              </div>
+            </label>
+
+            <div class="summary-row total">
+              <span>Tổng Thanh Toán:</span>
+              <span class="price" id="summaryFinalTotal">285.000 đ</span>
+            </div>
+
+            <button class="btn-primary" id="openCheckoutBtn" style="margin-top: 1.5rem;">
+              💳 Tiến Hành Thanh Toán Số
+            </button>
+
+            <p style="font-size: 0.72rem; color: var(--text-dim); text-align: center; margin-top: 0.85rem;">
+              🔒 Mã hóa thanh toán 256-bit • Tem Niêm Phong Điện Tử Bảo Đảm
+            </p>
+          </aside>
+
+        </div>
+      </div>
+
+      <!-- TAB B: LIVE LUGGAGE TRACKING & CHAIN OF CUSTODY -->
+      <div id="customerTrackingSection" style="display:none;">
+        
+        <!-- Search & Demo Switcher Bar -->
+        <div class="tracking-header-card">
+          <div style="display:flex; align-items:center; gap:0.75rem; flex-wrap:wrap;">
+            <span style="font-weight:700; font-size:0.9rem;">Mã Đơn Hàng:</span>
+            <span class="tracking-order-badge" id="trackOrderId">#VLG-88492</span>
+            <div id="trackStatusPill" class="tracking-status-pill status-in-transit">
+              <span class="pulse-dot"></span> Đang Vận Chuyển Cùng Tài Xế
+            </div>
+          </div>
+
+          <div style="display:flex; align-items:center; gap:0.5rem;">
+            <input type="text" id="trackingSearchInput" class="form-control" placeholder="Nhập mã đơn (VD: VLG-51027)" style="width:240px; padding:0.45rem 0.75rem; font-size:0.82rem;">
+            <button class="btn-secondary" id="trackingSearchBtn" style="padding:0.45rem 0.85rem; font-size:0.82rem;">Tìm Kiếm</button>
+          </div>
+        </div>
+
+        <div style="display:flex; gap:0.5rem; margin-bottom:1.5rem; align-items:center; flex-wrap:wrap;">
+          <span style="font-size:0.78rem; color:var(--text-muted);">Đơn Hàng Mẫu:</span>
+          <button class="chip-btn quick-order-pill" data-order="VLG-88492">Nguyễn Minh Tuấn (Hỏa Tốc Sân Bay)</button>
+          <button class="chip-btn quick-order-pill" data-order="VLG-51027">Lê Hoàng Yến (Lưu Tủ Khóa #104)</button>
+        </div>
+
+        <!-- Smart Locker Alert Notice -->
+        <div id="trackLockerAlertBox" style="display:none;"></div>
+
+        <div class="tracking-container">
+          
+          <!-- Left: Route Map & Live Milestones -->
+          <div>
+            <!-- Simulated GPS Map -->
+            <div class="map-visualizer">
+              <h4 style="font-size: 0.95rem; margin-bottom: 0.75rem; display: flex; justify-content: space-between;">
+                <span>🛰️ Bản Đồ Lộ Trình GPS & Giám Sát Thời Gian Thực</span>
+                <span style="color: var(--accent-cyan); font-family: var(--font-mono); font-size: 0.8rem;">Dự kiến giao: <strong id="trackEta">Hôm nay, 17:30</strong></span>
+              </h4>
+              <div class="map-canvas-container" id="mapRouteVisualizer">
+                <!-- SVG Route map rendered by tracking.js -->
+              </div>
+            </div>
+
+            <!-- Milestones Stepper -->
+            <div class="timeline-card">
+              <h4 style="font-size: 1.1rem; margin-bottom: 0.5rem;">Các Cột Mốc Vận Chuyển Quan Trọng</h4>
+              <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 1.5rem;">
+                Tất cả giai đoạn từ tiếp nhận đến bàn giao đều được đóng dấu thời gian và ghi vào sổ cái kiểm toán số.
+              </p>
+              
+              <div class="milestones-stepper" id="milestonesStepper">
+                <!-- Populated by tracking.js -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Tamper-Evident Digital Chain of Custody Card -->
+          <div>
+            <div class="seal-showcase-card">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                <h4 style="font-size: 1.1rem; color: #fff;">Chuỗi Niêm Phong Kỹ Thuật Số</h4>
+                <span class="section-badge" style="background: rgba(6, 182, 212, 0.2); color: var(--accent-cyan);">Tem Đang Hoạt Động</span>
+              </div>
+
+              <!-- Security Seal Photo Asset -->
+              <div class="seal-img-wrapper">
+                <img src="assets/security-seal.jpg" alt="Tem niêm phong bảo mật VALIGO SECURE-SHIELD">
+              </div>
+
+              <div class="seal-meta-grid">
+                <div class="seal-meta-item">
+                  <span class="seal-meta-label">Mã Serial Tem</span>
+                  <span class="seal-meta-value" id="trackSealNum">VSS-9480112</span>
+                </div>
+                <div class="seal-meta-item">
+                  <span class="seal-meta-label">Trạng Thái Niêm Phong</span>
+                  <span class="seal-meta-value" id="trackSealStatus" style="color:#34d399;">Đã Xác Thực Nguyên Vẹn</span>
+                </div>
+                <div class="seal-meta-item">
+                  <span class="seal-meta-label">Tài Xế Phụ Trách</span>
+                  <span class="seal-meta-value" id="trackDriverName" style="font-size: 0.75rem;">Trần Văn Minh</span>
+                </div>
+                <div class="seal-meta-item">
+                  <span class="seal-meta-label">Phương Tiện / Biển Số</span>
+                  <span class="seal-meta-value" id="trackDriverVehicle" style="font-size: 0.75rem;">Van Điện 43C-982.11</span>
+                </div>
+              </div>
+
+              <div style="display:flex; flex-direction:column; gap:0.6rem;">
+                <button class="btn-primary" id="viewCustodyBtn" style="font-size: 0.9rem;">
+                  📜 Xem Chứng Thư Niêm Phong Số (Certificate)
+                </button>
+                <button class="btn-secondary" id="simulateNfcTapBtn" style="justify-content: center; font-size: 0.85rem;">
+                  📲 Chạm Quét Chip NFC Xác Thực
+                </button>
+              </div>
+
+              <div style="margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid var(--border-subtle); font-size: 0.75rem; color: var(--text-muted);">
+                <p>📞 Hotline Tài Xế: <strong id="trackDriverPhone" style="color:#fff;">+84 912 345 678</strong></p>
+                <p style="margin-top:0.25rem;">📍 Tuyến: <span id="trackPickupLoc">InterContinental Danang</span> ➔ <span id="trackDestLoc">Sân bay Quốc tế Đà Nẵng</span></p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ====================================================================
+         2. DRIVER MANAGEMENT & CUSTODY APP (MOBILE SIMULATOR)
+         ==================================================================== -->
+    <section class="app-view" id="view-driver">
+      <div class="driver-app-frame">
+        <div class="driver-notch"></div>
+        
+        <div class="driver-profile-header">
+          <div style="display: flex; align-items: center; gap: 0.75rem;">
+            <div class="driver-avatar">TM</div>
+            <div>
+              <h4 style="font-size: 1rem; color: #fff;">Trần Văn Minh</h4>
+              <span style="font-size: 0.72rem; color: var(--accent-cyan); font-family: var(--font-mono);">Mã: DRV-402 • 4.9 ★</span>
+            </div>
+          </div>
+          <div style="text-align: right;">
+            <span style="font-size: 0.7rem; color: #34d399; font-weight: 700;">🟢 ĐANG LÀM VIỆC</span>
+            <div style="font-size: 0.7rem; color: var(--text-muted);">Van Điện Xanh SM</div>
+          </div>
+        </div>
+
+        <div style="margin-top: 1.25rem;">
+          <h5 style="font-size: 0.85rem; text-transform: uppercase; color: var(--text-muted); letter-spacing: 0.05em;">
+            Nhiệm Vụ Giao Nhận Được Giao
+          </h5>
+          <div id="driverTasksList">
+            <!-- Dynamically populated by driver.js -->
+          </div>
+        </div>
+
+        <div style="margin-top: 1.5rem; background: rgba(255,255,255,0.03); border-radius: 12px; padding: 0.85rem; font-size: 0.75rem; color: var(--text-dim);">
+          ℹ️ <strong>Quy trình chuẩn tài xế:</strong> Kiểm tra khóa kéo, dán tem niêm phong số, chụp ảnh đối chứng 4 góc, thu chữ ký số khách hàng và cân trọng lượng trước khi di chuyển.
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         3. SMART LOCKER HUB SIMULATOR (VALILOCKER NETWORK)
+         ==================================================================== -->
+    <section class="app-view" id="view-locker">
+      <div style="margin-bottom: 1.5rem;">
+        <h2 style="font-size: 1.8rem; margin-bottom: 0.25rem;">Trạm Tủ Khóa Thông Minh ValiLocker</h2>
+        <p style="color: var(--text-muted); font-size: 0.95rem;">
+          Trạm Ga Quốc Nội Sân Bay Đà Nẵng (Cửa D2) • Lưu Trữ Đệm Không Tiếp Xúc 24/7
+        </p>
+      </div>
+
+      <div class="locker-hub-container">
+        
+        <!-- Physical Locker Doors Grid -->
+        <div class="locker-bank">
+          <div class="locker-bank-header">
+            <div>
+              <h4 style="font-size: 1.15rem; color: #fff;">Dãy Ngăn Tủ Điện Tử Khu A</h4>
+              <span style="font-size: 0.78rem; color: var(--text-muted);">Khóa Chốt Điện Tử Solenoid Tự Động</span>
+            </div>
+            <div style="display: flex; gap: 1rem; font-size: 0.75rem;">
+              <span style="display: flex; align-items: center; gap: 0.3rem;"><span class="locker-status-indicator status-available" style="position:static;"></span> Sẵn Sàng</span>
+              <span style="display: flex; align-items: center; gap: 0.3rem;"><span class="locker-status-indicator status-occupied" style="position:static;"></span> Đang Giữ Đồ</span>
+              <span style="display: flex; align-items: center; gap: 0.3rem;"><span class="locker-status-indicator status-reserved" style="position:static;"></span> Đã Đặt Trước</span>
+            </div>
+          </div>
+
+          <div class="locker-doors-grid" id="lockerDoorsGrid">
+            <!-- 12 locker doors rendered by locker.js -->
+          </div>
+
+          <!-- Open Door Control Banner -->
+          <div id="lockerActionBanner" style="display:none;"></div>
+        </div>
+
+        <!-- Touch Terminal Keypad -->
+        <div class="locker-terminal">
+          <div class="terminal-screen">
+            <div class="terminal-title" id="terminalTitle">KHÁCH TỰ LẤY ĐỒ • NHẬP MÃ OTP 6 SỐ</div>
+            <div class="terminal-display-code" id="terminalDisplayCode">------</div>
+            <div class="terminal-msg" id="terminalMsg">Nhập mã bảo mật trên bàn phím số</div>
+          </div>
+
+          <!-- Mode selector -->
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-bottom: 1rem;">
+            <button class="role-tab active" id="terminalModePickup" style="justify-content: center; font-size: 0.8rem;">
+              👤 Khách Nhận Đồ
+            </button>
+            <button class="role-tab" id="terminalModeDeposit" style="justify-content: center; font-size: 0.8rem;">
+              🚚 Tài Xế Gửi Đồ
+            </button>
+          </div>
+
+          <!-- Numeric Keypad -->
+          <div class="terminal-keypad-grid">
+            <button class="keypad-btn keypad-num" data-val="1">1</button>
+            <button class="keypad-btn keypad-num" data-val="2">2</button>
+            <button class="keypad-btn keypad-num" data-val="3">3</button>
+            <button class="keypad-btn keypad-num" data-val="4">4</button>
+            <button class="keypad-btn keypad-num" data-val="5">5</button>
+            <button class="keypad-btn keypad-num" data-val="6">6</button>
+            <button class="keypad-btn keypad-num" data-val="7">7</button>
+            <button class="keypad-btn keypad-num" data-val="8">8</button>
+            <button class="keypad-btn keypad-num" data-val="9">9</button>
+            <button class="keypad-btn action-clear" id="keypadClear">XÓA</button>
+            <button class="keypad-btn keypad-num" data-val="0">0</button>
+            <button class="keypad-btn action-enter" id="keypadEnter">MỞ</button>
+          </div>
+
+          <!-- Quick Actions -->
+          <div class="terminal-quick-actions">
+            <button class="btn-secondary" id="testPickupBtn" style="font-size: 0.78rem; justify-content: center;">
+              ⚡ Thử Nghiệm: Khách Nhận Đồ (OTP: 683-912)
+            </button>
+            <button class="btn-secondary" id="testDepositBtn" style="font-size: 0.78rem; justify-content: center;">
+              📦 Thử Nghiệm: Tài Xế Gửi Vào Ngăn #106
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         4. OPERATIONS ADMIN DASHBOARD
+         ==================================================================== -->
+    <section class="app-view" id="view-admin">
+      <div style="margin-bottom: 1.5rem;">
+        <h2 style="font-size: 1.8rem; margin-bottom: 0.25rem;">Trung Tâm Chỉ Huy Vận Hành (Admin Ops)</h2>
+        <p style="color: var(--text-muted); font-size: 0.95rem;">
+          Giám sát đội xe theo thời gian thực, điều phối giao nhận và kiểm toán chuỗi hành trình mật mã số.
+        </p>
+      </div>
+
+      <!-- Real-time KPI Metric Ribbon -->
+      <div class="admin-metrics-grid">
+        <div class="metric-card cyan">
+          <div class="metric-header">
+            <span>ĐƠN HOẠT ĐỘNG</span>
+            <span>📦</span>
+          </div>
+          <div class="metric-value" id="adminKpiActive">2</div>
+          <div class="metric-footer">Đang xử lý trong hệ thống</div>
+        </div>
+
+        <div class="metric-card amber">
+          <div class="metric-header">
+            <span>ĐANG VẬN CHUYỂN</span>
+            <span>🚚</span>
+          </div>
+          <div class="metric-value" id="adminKpiTransit">1</div>
+          <div class="metric-footer">Định vị GPS trực tiếp</div>
+        </div>
+
+        <div class="metric-card emerald">
+          <div class="metric-header">
+            <span>TỶ LỆ ĐÚNG HẸN</span>
+            <span>⏱️</span>
+          </div>
+          <div class="metric-value" id="adminKpiOnTime">99.6%</div>
+          <div class="metric-footer">Cam kết chuẩn SLA</div>
+        </div>
+
+        <div class="metric-card">
+          <div class="metric-header">
+            <span>CÔNG SUẤT TỦ KHÓA</span>
+            <span>🔐</span>
+          </div>
+          <div class="metric-value" id="adminKpiLocker">75% (9/12)</div>
+          <div class="metric-footer">Trạm Sân Bay Ga T1</div>
+        </div>
+
+        <div class="metric-card emerald">
+          <div class="metric-header">
+            <span>ĐỘI XE HOẠT ĐỘNG</span>
+            <span>⚡</span>
+          </div>
+          <div class="metric-value" id="adminKpiFleet">2/3 Đang Chạy</div>
+          <div class="metric-footer">Van điện & xe tải nhẹ</div>
+        </div>
+      </div>
+
+      <!-- Filterable Orders Dispatch Table -->
+      <div class="admin-table-container">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.75rem;">
+          <h3 style="font-size: 1.2rem;">Hàng Đợi Điều Phối & Danh Sách Đơn Hàng</h3>
+          <div style="display: flex; gap: 0.5rem;">
+            <button class="chip-btn admin-filter-btn active" data-filter="all">Tất Cả</button>
+            <button class="chip-btn admin-filter-btn" data-filter="confirmed">Mới Nhận</button>
+            <button class="chip-btn admin-filter-btn" data-filter="in-transit">Đang Vận Chuyển</button>
+            <button class="chip-btn admin-filter-btn" data-filter="stored-locker">Trong Tủ Khóa</button>
+            <button class="chip-btn admin-filter-btn" data-filter="delivered">Đã Bàn Giao</button>
+          </div>
+        </div>
+
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Mã Đơn / Mã Nhận</th>
+              <th>Khách Hàng</th>
+              <th>Lộ Trình (Điểm Đi ➔ Điểm Đến)</th>
+              <th>Kiện</th>
+              <th>Trạng Thái</th>
+              <th>Tem Niêm Phong</th>
+              <th>Tài Xế Phụ Trách</th>
+              <th>Hành Động</th>
+            </tr>
+          </thead>
+          <tbody id="adminOrdersTableBody">
+            <!-- Dynamically populated by admin.js -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Live Chain-of-Custody Audit Ledger Stream -->
+      <div class="audit-stream-card">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+          <div>
+            <h4 style="font-size: 1.1rem; color: #fff;">Sổ Cái Kiểm Toán Chuỗi Hành Trình (SHA-256 Audit Ledger)</h4>
+            <span style="font-size: 0.75rem; color: var(--text-muted);">Ghi nhận bất biến mọi giao dịch tiếp nhận, niêm phong và bàn giao</span>
+          </div>
+          <span style="font-size: 0.72rem; color: #34d399; font-family: var(--font-mono);">● LUỒNG DỮ LIỆU ĐANG KẾT NỐI</span>
+        </div>
+
+        <div class="audit-stream-list" id="adminAuditStreamList">
+          <!-- Populated by admin.js -->
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- ====================================================================
+       MODALS & DIALOGS
+       ==================================================================== -->
+
+  <!-- Modal 1: Digital Payment Checkout -->
+  <div class="modal-overlay" id="checkoutModal">
+    <div class="modal-content">
+      <button class="modal-close-btn" id="closeCheckoutBtn">&times;</button>
+      
+      <div style="text-align: center; margin-bottom: 1.5rem;">
+        <div class="brand-logo-badge" style="margin: 0 auto 0.75rem auto;">V</div>
+        <h3 style="font-size: 1.4rem;">Xác Nhận & Thanh Toán</h3>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">Thanh toán số an toàn với chứng nhận niêm phong bảo mật</p>
+      </div>
+
+      <div style="display: flex; justify-content: center; gap: 0.5rem; margin-bottom: 1.5rem; flex-wrap: wrap;">
+        <button class="chip-btn pay-method-pill active" data-method="card">💳 Thẻ Quốc Tế / ATM</button>
+        <button class="chip-btn pay-method-pill" data-method="apple"> Apple / Google Pay</button>
+        <button class="chip-btn pay-method-pill" data-method="qr">📲 Quét Mã VietQR / MoMo</button>
+      </div>
+
+      <!-- Card Section -->
+      <div id="cardPaySection">
+        <div class="form-group">
+          <label class="form-label">Tên Chủ Thẻ</label>
+          <input type="text" class="form-control" value="NGUYEN MINH TUAN">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Số Thẻ</label>
+          <input type="text" class="form-control" value="9704 •••• •••• 8849">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Ngày Hết Hạn</label>
+            <input type="text" class="form-control" value="08/28">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Mã Bảo Mật CVC/CVV</label>
+            <input type="password" class="form-control" value="882">
+          </div>
+        </div>
+      </div>
+
+      <!-- QR Section -->
+      <div id="qrPaySection" style="display:none; text-align:center; padding:1.5rem; background:rgba(255,255,255,0.02); border-radius:12px; margin-bottom:1rem;">
+        <div style="width:160px; height:160px; background:#fff; margin:0 auto 1rem auto; padding:10px; border-radius:8px; display:flex; align-items:center; justify-content:center;">
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=140x140&data=VALIGO-VIETQR-THANHTOAN-285000" alt="Mã VietQR thanh toán hành lý" style="width:100%; height:100%;">
+        </div>
+        <p style="font-size:0.85rem; color:#cbd5e1;">Quét mã bằng ứng dụng VietQR, MoMo, ZaloPay hoặc Mobile Banking bất kỳ</p>
+      </div>
+
+      <div style="background: rgba(0,0,0,0.3); border-radius: 8px; padding: 1rem; margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center;">
+        <span style="font-size: 0.95rem; color: #cbd5e1;">Tổng Tiền Thanh Toán:</span>
+        <span id="modalCheckoutTotal" style="font-size: 1.5rem; font-weight: 800; color: var(--accent-cyan); font-family: var(--font-display);">285.000 đ</span>
+      </div>
+
+      <button class="btn-primary" id="confirmPaymentBtn">
+        ✓ Xác Nhận Thanh Toán & Đặt Chỗ
+      </button>
+    </div>
+  </div>
+
+  <!-- Modal 2: Official Digital Chain of Custody Certificate -->
+  <div class="modal-overlay" id="custodyModal">
+    <div class="modal-content" style="max-width: 680px;">
+      <button class="modal-close-btn" id="closeCustodyBtn">&times;</button>
+      
+      <div style="border-bottom: 1px solid var(--border-subtle); padding-bottom: 1rem; margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: flex-start;">
+        <div>
+          <span style="font-size: 0.7rem; color: var(--accent-cyan); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 800;">VALIGO SECURE-SHIELD</span>
+          <h3 style="font-size: 1.4rem; color: #fff;">Chứng Thư Niêm Phong Chuỗi Hành Trình</h3>
+          <p style="font-size: 0.8rem; color: var(--text-muted);">Mã Băm Mật Mã: <span style="font-family: var(--font-mono); color: #cbd5e1;">CERT-VN-9908-2B8A</span></p>
+        </div>
+        <div style="text-align: right;">
+          <span class="tracking-status-pill status-delivered" id="certCustodyStatus" style="font-size: 0.75rem;">Đã Xác Thực Nguyên Vẹn</span>
+        </div>
+      </div>
+
+      <!-- 4-Point Inspection Checklist -->
+      <div style="background: rgba(15, 23, 42, 0.7); border: 1px solid var(--border-subtle); border-radius: 12px; padding: 1.25rem; margin-bottom: 1.5rem;">
+        <h4 style="font-size: 0.95rem; color: #fff; margin-bottom: 0.75rem;">Biên Bản Kiểm Định 4 Điểm An Toàn</h4>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; font-size: 0.8rem;">
+          <div>✅ <strong>Khóa kéo & Khóa TSA:</strong> Khóa kéo nguyên vẹn, chốt cơ khí tốt</div>
+          <div>✅ <strong>Vỏ vali bên ngoài:</strong> Không có vết nứt rách kết cấu</div>
+          <div>✅ <strong>Cân nặng chuẩn định:</strong> Ghi nhận 18.4 kg tại chỗ</div>
+          <div>✅ <strong>Tem niêm phong số:</strong> Tem hologram VSS-9480112 đã khóa</div>
+        </div>
+      </div>
+
+      <h4 style="font-size: 1rem; margin-bottom: 0.75rem;">Sổ Cái Sự Kiện Niêm Phong (Cryptographic Ledger)</h4>
+      <div id="certLedgerTimeline">
+        <!-- Rendered by custody.js -->
+      </div>
+
+      <div style="margin-top: 1.5rem; display: flex; justify-content: flex-end; gap: 0.5rem;">
+        <button class="btn-secondary" onclick="window.print()">🖨️ In Chứng Thư</button>
+        <button class="btn-primary" onclick="document.getElementById('custodyModal').classList.remove('open')" style="width: auto;">Đóng</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 3: Driver Custody Wizard (Photo & Seal Scanner) -->
+  <div class="modal-overlay" id="driverCustodyWizardModal">
+    <div class="modal-content">
+      <button class="modal-close-btn" id="closeDriverWizardBtn">&times;</button>
+      
+      <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem;">Quy Trình Tiếp Nhận & Khóa Niêm Phong</h3>
+      <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 1.25rem;">
+        Tiếp nhận hành lý của khách hàng: <strong id="wizardCustomerName" style="color:#fff;">Nguyễn Minh Tuấn</strong> (<span id="wizardOrderBags">2 kiện</span>)
+      </p>
+
+      <!-- Barcode / QR Scanner Simulator -->
+      <div class="interactive-scanner-box" id="simulateSealScanBtn">
+        <div style="font-size: 2rem; margin-bottom: 0.5rem;">📷</div>
+        <strong style="color: var(--accent-cyan); font-size: 0.95rem; display: block;">Chạm Để Quét Mã Vạch / QR Trên Tem Niêm Phong</strong>
+        <span style="font-size: 0.75rem; color: var(--text-muted);">Mô phỏng camera quét quang học trên điện thoại tài xế</span>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Mã Serial Tem Niêm Phong</label>
+        <input type="text" id="driverInputSealSerial" class="form-control" value="VSS-9480112" readonly>
+      </div>
+
+      <div style="background: rgba(0,0,0,0.3); border-radius: 8px; padding: 0.85rem; font-size: 0.8rem; margin-bottom: 1.25rem;">
+        <label style="display:flex; align-items:center; gap:0.5rem; margin-bottom:0.4rem; cursor:pointer;">
+          <input type="checkbox" checked> Tình trạng vali đã đối chứng trực tiếp với khách/lễ tân
+        </label>
+        <label style="display:flex; align-items:center; gap:0.5rem; cursor:pointer;">
+          <input type="checkbox" checked> Tem niêm phong đã luồn qua chốt kéo và dán cố định
+        </label>
+      </div>
+
+      <button class="btn-primary" id="finishPickupCustodyBtn">
+        ✓ Ký Nhận Tiếp Quản & Bắt Đầu Di Chuyển
+      </button>
+    </div>
+  </div>
+
+  <!-- Modal 4: Customer Signature Pad Modal -->
+  <div class="modal-overlay" id="signatureModal">
+    <div class="modal-content">
+      <button class="modal-close-btn" id="closeSignatureModalBtn">&times;</button>
+      
+      <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem;">Ký Nhận Bàn Giao Hành Lý</h3>
+      <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 1rem;">
+        Quý khách vui lòng ký tên vào khung bên dưới để xác nhận nhận đủ hành lý và tem niêm phong còn nguyên vẹn.
+      </p>
+
+      <div class="signature-pad-container">
+        <canvas id="signatureCanvas" width="540" height="130"></canvas>
+      </div>
+
+      <div style="display: flex; justify-content: space-between; margin-bottom: 1.5rem;">
+        <button class="btn-secondary" id="clearSignatureBtn" style="font-size: 0.8rem;">Xóa Ký Lại</button>
+        <span style="font-size: 0.75rem; color: var(--text-dim);">Dùng ngón tay hoặc chuột để ký</span>
+      </div>
+
+      <button class="btn-primary" id="confirmDeliverySignBtn">
+        ✓ Xác Nhận Đã Nhận & Hoàn Tất Đơn Hàng
+      </button>
+    </div>
+  </div>
+
+  <!-- Modal 5: Incident / Damage Claim Reporting -->
+  <div class="modal-overlay" id="claimModal">
+    <div class="modal-content">
+      <button class="modal-close-btn" id="closeClaimModalBtn">&times;</button>
+      
+      <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem;">Gửi Yêu Cầu Hỗ Trợ / Khiếu Nại Hành Lý</h3>
+      <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 1.25rem;">
+        Bảo hiểm ValiShield bồi thường tối đa 25.000.000 VNĐ. Đội ngũ kiểm soát chất lượng phản hồi trong vòng 15 phút.
+      </p>
+
+      <div class="form-group">
+        <label class="form-label">Loại Sự Cố Cần Hỗ Trợ</label>
+        <select id="claimCategory" class="form-control">
+          <option value="Chậm Giờ Giao">Chậm Giờ Giao So Với Khung Hẹn</option>
+          <option value="Dấu Hiệu Rách/Bóc Tem">Phát Hiện Dấu Hiệu Rách/Bóc Tem Niêm Phong</option>
+          <option value="Trầy Xước / Hư Hại Vỏ">Trầy Xước / Hư Hại Vỏ Vali Bên Ngoài</option>
+          <option value="Hỗ Trợ Mở Tủ Khóa">Cần Hỗ Trợ Mở Ngăn Tủ Khóa Thông Minh</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Mô Tả Chi Tiết Sự Cố</label>
+        <textarea id="claimNotes" class="form-control" rows="3" placeholder="Vui lòng nêu rõ tình trạng sự cố để nhân viên hỗ trợ nhanh nhất..."></textarea>
+      </div>
+
+      <button class="btn-primary" id="submitClaimBtn">
+        Gửi Phiếu Yêu Cầu Hỗ Trợ Ưu Tiên
+      </button>
+    </div>
+  </div>
+
+  <!-- ====================================================================
+       FLOATING SUPPORT BOT (VALIBOT)
+       ==================================================================== -->
+  <button class="support-widget-btn" id="supportWidgetBtn" title="Hỗ trợ trực tuyến ValiBot 24/7">
+    💬
+  </button>
+
+  <div class="valibot-drawer" id="valibotDrawer">
+    <div class="valibot-header">
+      <div style="display: flex; align-items: center; gap: 0.6rem;">
+        <div style="width: 32px; height: 32px; border-radius: 50%; background: var(--primary); display: flex; align-items: center; justify-content: center; font-size: 0.9rem;">🤖</div>
+        <div>
+          <h4 style="font-size: 0.95rem; color: #fff;">Trợ Lý ValiBot</h4>
+          <span style="font-size: 0.68rem; color: #34d399;">● Trực Tuyến 24/7</span>
+        </div>
+      </div>
+      <button class="modal-close-btn" id="closeValibotBtn" style="position: static; font-size: 1.2rem;">&times;</button>
+    </div>
+
+    <div class="valibot-messages" id="valibotMessages">
+      <div class="bot-msg">
+        Xin chào! Tôi là trợ lý ảo ValiBot. Tôi có thể hỗ trợ gì cho hành trình du lịch rảnh tay của bạn hôm nay?
+      </div>
+    </div>
+
+    <div class="quick-chips-row">
+      <button class="chip-btn valibot-chip" data-query="Hành lý của tôi hiện đang ở đâu?">📍 Vali của tôi đâu?</button>
+      <button class="chip-btn valibot-chip" data-query="Cách mở tủ khóa thông minh thế nào?">🔐 Hướng dẫn mở tủ khóa</button>
+      <button class="chip-btn valibot-chip" data-query="Tem niêm phong bảo mật hoạt động ra sao?">🛡️ Tem niêm phong</button>
+      <button class="chip-btn valibot-chip" data-query="Tôi muốn báo cáo trễ giờ hoặc hư hỏng">⚠️ Báo cáo sự cố</button>
+    </div>
+
+    <div class="valibot-input-row">
+      <input type="text" id="valibotTextInput" class="form-control" placeholder="Nhập câu hỏi..." style="padding: 0.5rem 0.75rem; font-size: 0.85rem;">
+      <button class="btn-primary" id="sendValibotMsgBtn" style="width: auto; padding: 0.5rem 1rem; font-size: 0.85rem;">Gửi</button>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- Scripts -->
+  <script src="js/state.js"></script>
+  <script src="js/booking.js"></script>
+  <script src="js/tracking.js"></script>
+  <script src="js/custody.js"></script>
+  <script src="js/locker.js"></script>
+  <script src="js/driver.js"></script>
+  <script src="js/admin.js"></script>
+  <script src="js/support.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/motion.js"></script>
+
+</body>
+</html>

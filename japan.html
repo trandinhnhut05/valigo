@@ -1,0 +1,714 @@
+<!--
+  Copyright (c) 2026 VALIGO Platform
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<!DOCTYPE html>
+<html lang="vi" prefix="og: https://ogp.me/ns#">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VALIGO Japan | Dịch Vụ Giao Nhận & Gửi Hành Lý Tuyến Nhật Bản - Tokyo, Kyoto, Osaka & Sân Bay</title>
+  <meta name="description" content="Du lịch Nhật Bản nhẹ tênh từ ¥2,090 (~350.000đ). Giao nhận hành lý tận nơi giữa khách sạn Tokyo, Kyoto, Osaka, sân bay Haneda, Narita, Kansai qua mạng lưới Yamato Transport & Shinkansen. Bảo hiểm ¥1,000,000.">
+  <meta name="keywords" content="giao hành lý nhật bản, gửi vali tokyo kyoto, yamato transport takkyubin, gửi hành lý sân bay haneda narita, shinkansen luggage delivery, valigo japan">
+  <meta name="author" content="VALIGO Japan Platform">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="http://localhost:8080/japan.html">
+
+  <!-- Open Graph / Facebook / Zalo -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="http://localhost:8080/japan.html">
+  <meta property="og:title" content="VALIGO Japan - Dịch Vụ Giao Nhận Hành Lý Toàn Tuyến Nhật Bản">
+  <meta property="og:description" content="Khám phá Nhật Bản rảnh tay từ ¥2,090. Nhận hành lý tại sảnh khách sạn hoặc sân bay Haneda/Narita, giao thẳng tới Ryokan Kyoto & Osaka.">
+  <meta property="og:image" content="assets/japan-hero.jpg">
+  <meta property="og:locale" content="vi_VN">
+  <meta property="og:site_name" content="VALIGO Japan">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="VALIGO Japan | Giao Nhận Hành Lý Tokyo, Kyoto, Osaka & Sân Bay">
+  <meta name="twitter:description" content="Du lịch rảnh tay trên tàu siêu tốc Shinkansen. Giao hành lý hỏa tốc cùng mạng lưới Kuroneko Yamato.">
+  <meta name="twitter:image" content="assets/japan-hero.jpg">
+
+  <!-- Structured Data Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TravelAgency",
+    "name": "VALIGO Japan - Dịch Vụ Giao Nhận Hành Lý Tuyến Nhật Bản",
+    "url": "http://localhost:8080/japan.html",
+    "image": "http://localhost:8080/assets/japan-hero.jpg",
+    "priceRange": "¥2,090 - ¥5,886",
+    "telephone": "+81-3-5555-8888",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Tokyo",
+      "addressCountry": "JP"
+    },
+    "description": "Nền tảng giao nhận và lưu trữ hành lý thông minh tại Nhật Bản kết hợp cùng Yamato Transport và Shinkansen."
+  }
+  </script>
+
+  <link rel="stylesheet" href="css/bounce.css">
+  <link rel="stylesheet" href="css/preloader.css">
+</head>
+<body>
+
+  <!-- VALIGO Cinematic Luxury Page Preloader & Refresh Loading Screen -->
+  <div id="valigo-preloader" class="valigo-preloader" aria-hidden="true">
+    <div class="preloader-backdrop"></div>
+    <div class="preloader-content">
+      <div class="preloader-logo-card">
+        <div class="preloader-logo-glow"></div>
+        <div class="preloader-logo-frame">
+          <img src="assets/valigo-logo.png" alt="VALIGO - Keep It Safe, Enjoy The Way" class="preloader-logo-img">
+          <div class="preloader-logo-sheen"></div>
+        </div>
+      </div>
+      <div class="preloader-brand-sub">Smart Baggage Mobility • Tuyến Nhật Bản (Tokyo - Kyoto - Osaka)</div>
+      <div class="preloader-route-track">
+        <div class="preloader-route-line"></div>
+        <div class="preloader-van-marker" id="preloaderVanMarker">🚅</div>
+        <div class="preloader-dest-marker">📍</div>
+      </div>
+      <div class="preloader-progress-box">
+        <div class="preloader-progress-track">
+          <div class="preloader-progress-bar" id="preloaderProgressBar"></div>
+        </div>
+        <div class="preloader-status-row">
+          <span class="preloader-status-text" id="preloaderStatusText">Đang kết nối hệ thống Yamato & Shinkansen...</span>
+          <span class="preloader-percent" id="preloaderPercent">0%</span>
+        </div>
+      </div>
+      <div class="preloader-security-badge">
+        <span class="preloader-pulse-dot"></span>
+        <span>Hợp Tác Yamato Transport Kuroneko • Bảo Hiểm ¥1,000,000</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Announcement Bar with Switcher to Vietnam Route -->
+  <aside class="bounce-announcement-bar" aria-label="Thông báo ưu đãi">
+    <span>✨ Đặt dịch vụ Tuyến Nhật Bản qua ứng dụng, hoàn tiền 10% • Liên kết mạng lưới Kuroneko Yamato & Shinkansen</span>
+    <span style="opacity:0.5;">|</span>
+    <button onclick="window.triggerValigoLoader()" style="background:rgba(255,255,255,0.12); border:1px solid rgba(222,242,1,0.5); color:#def201; border-radius:999px; padding:2px 10px; font-size:0.75rem; font-weight:700; cursor:pointer;" title="Bấm để thử nghiệm hiệu ứng chuyển động Loading">🔄 Thử Hiệu Ứng Loading</button>
+    <span style="opacity:0.5;">|</span>
+    <a href="vietnam.html" style="color:#def201; font-weight:700; display:inline-flex; align-items:center; gap:6px;" title="Chuyển sang giao diện Tuyến Việt Nam">🇻🇳 Chuyển Sang Giao Diện Tuyến Việt Nam ➔</a>
+  </aside>
+
+  <!-- Header & Navigation -->
+  <header class="bounce-header">
+    <div class="bounce-header-inner">
+      <div style="display:flex; align-items:center; gap:2.5rem;">
+        <a href="japan.html" class="bounce-logo-wrapper" title="VALIGO Tuyến Nhật Bản">
+          <img src="assets/valigo-logo.png" alt="VALIGO - Keep It Safe, Enjoy The Way" style="height:38px; width:auto; object-fit:contain;" height="38">
+          <small style="font-size:0.75rem; background:rgba(69,76,237,0.12); color:#454ced; border:1px solid rgba(69,76,237,0.3); padding:2px 8px; border-radius:999px; margin-left:4px; font-weight:800;">JAPAN 🇯🇵</small>
+        </a>
+
+        <nav class="bounce-nav-links" aria-label="Menu chính">
+          <a href="japan.html" class="bounce-nav-item active">🇯🇵 Tuyến Nhật Bản</a>
+          <a href="vietnam.html" class="bounce-nav-item" style="color:var(--bounce-primary); font-weight:700;">🇻🇳 Tuyến Việt Nam</a>
+          <a href="#how-it-works" class="bounce-nav-item">Cách Hoạt Động</a>
+          <a href="#usecases" class="bounce-nav-item">Tình Huống Dùng</a>
+          <a href="#routes" class="bounce-nav-item">Tuyến Phổ Biến</a>
+          <a href="#reviews" class="bounce-nav-item">Đánh Giá</a>
+          <a href="#faq" class="bounce-nav-item">Hỏi Đáp FAQ</a>
+        </nav>
+      </div>
+
+      <div class="bounce-header-right">
+        <!-- Currency Switcher: JPY -> VND -> USD -->
+        <button class="bounce-lang-pill" id="currencyToggleBtn" title="Chuyển đổi tiền tệ">
+          🇯🇵 JPY (¥)
+        </button>
+
+        <a href="vietnam.html" class="btn-bounce-outline" style="border-color:#def201; color:#def201; display:flex; align-items:center; gap:6px;" title="Chuyển sang giao diện Tuyến Việt Nam">
+          🇻🇳 Tuyến Việt Nam
+        </a>
+
+        <button class="btn-bounce-primary" onclick="document.getElementById('searchOriginInput').focus();">
+          Đặt Giao Ngay
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Area -->
+  <main>
+
+    <!-- Hero Section -->
+    <section class="bounce-hero" aria-labelledby="hero-main-title">
+      <div class="bounce-hero-inner">
+        <div class="bounce-hero-grid">
+          
+          <!-- Left: Headline & Booking Search Widget -->
+          <div>
+            <div class="bounce-hero-tag">
+              <span>🇯🇵</span>
+              <span>Mạng Lưới Giao Nhận Hành Lý Khắp Nhật Bản (Nationwide Delivery)</span>
+            </div>
+
+            <h1 class="bounce-hero-title" id="hero-main-title">
+              Khám phá du lịch Nhật Bản nhẹ tênh, rảnh tay
+            </h1>
+
+            <p class="bounce-hero-subtitle">
+              Du lịch thảnh thơi chỉ từ <strong id="heroSubtitlePrice" style="color:var(--bounce-primary);">¥2,090</strong> (~350.000đ). Chúng tôi giao nhận hành lý tận nơi giữa Tokyo, Kyoto, Osaka, các Ryokan onsen truyền thống và sân bay Haneda, Narita & Kansai.
+            </p>
+
+            <!-- Floating Search & Booking Card -->
+            <div class="bounce-search-card">
+              <div class="bounce-search-header">
+                <div class="bounce-service-toggle">
+                  <button class="service-toggle-btn active" data-service-mode="hotel">Khách sạn ➔ Khách sạn</button>
+                  <button class="service-toggle-btn" data-service-mode="airport">Sân bay ➔ Khách sạn</button>
+                  <button class="service-toggle-btn" data-service-mode="station">Ga Tàu Shinkansen</button>
+                </div>
+                <span style="font-size:0.75rem; color:var(--bounce-green); font-weight:700;">● Mạng Lưới Kuroneko Yamato 24/7</span>
+              </div>
+
+              <div class="search-field-grid">
+                <div class="search-field-box">
+                  <label class="search-field-label" for="searchOriginInput">Điểm Gửi Hành Lý (Tại Nhật)</label>
+                  <input type="text" id="searchOriginInput" class="search-field-input" value="Ga Tokyo / Khách sạn Shinjuku" placeholder="Ga tàu, sân bay hoặc khách sạn tại Nhật">
+                </div>
+
+                <div class="search-field-box">
+                  <label class="search-field-label" for="searchDestInput">Điểm Nhận Hành Lý</label>
+                  <input type="text" id="searchDestInput" class="search-field-input" value="Ryokan Phố Cổ Gion Kyoto" placeholder="Khách sạn hoặc Ryokan đến">
+                </div>
+              </div>
+
+              <div class="search-field-grid">
+                <div class="search-field-box">
+                  <label class="search-field-label" for="searchDateInput">Thời Gian Gửi</label>
+                  <input type="text" id="searchDateInput" class="search-field-input" value="Sáng mai (Trước 10:00 AM)">
+                </div>
+
+                <div class="search-field-box">
+                  <label class="search-field-label" for="searchBagsSelect">Số Lượng Kiện</label>
+                  <select id="searchBagsSelect" class="search-field-input" style="cursor:pointer;">
+                    <option value="1">1 Kiện Vali (Dưới 30kg)</option>
+                    <option value="2" selected>2 Kiện Vali Ký Gửi</option>
+                    <option value="3">3 Kiện Vali</option>
+                    <option value="4">4+ Kiện / Đồ Trượt Tuyết Ski</option>
+                  </select>
+                </div>
+              </div>
+
+              <button class="search-btn-cta" id="mainSearchBtn">
+                <span>Đặt giao hành lý Tuyến Nhật Bản</span>
+                <span>➔</span>
+              </button>
+
+              <!-- Trust Badges -->
+              <div class="bounce-trust-ribbon">
+                <div class="trust-item">
+                  <span>🔄</span>
+                  <span>Miễn phí hủy lịch</span>
+                </div>
+                <div class="trust-item">
+                  <span>🛡️</span>
+                  <span>Bảo hiểm tới ¥1,000,000</span>
+                </div>
+                <div class="trust-item">
+                  <span>💬</span>
+                  <span>Hỗ trợ Tiếng Việt & 日本語</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Photographic Visual Media -->
+          <div class="bounce-hero-visual">
+            <img src="assets/japan-hero.jpg" alt="Du khách dạo bước thảnh thơi tại phố cổ Kyoto trong khi hành lý được giao sẵn về Ryokan" width="640" height="400">
+            <div class="bounce-hero-caption-card">
+              <div>
+                <strong style="font-size:0.9rem; color:var(--bounce-dark); display:block;">Phố Cổ Gion, Kyoto (祇園)</strong>
+                <span style="font-size:0.75rem; color:var(--bounce-gray-700);">Hành lý giao sẵn trong phòng Ryokan trước 17:00</span>
+              </div>
+              <span style="background:var(--bounce-green-bg); color:var(--bounce-green); padding:4px 10px; border-radius:999px; font-weight:700; font-size:0.78rem;">
+                ✓ Đã Giao Thành Công
+              </span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="bounce-section" id="how-it-works" aria-labelledby="how-it-works-title">
+      <h2 class="bounce-section-title" id="how-it-works-title">Cách dịch vụ giao hành lý tại Nhật hoạt động</h2>
+      <p class="bounce-section-subtitle">
+        Gửi hành lý đi trước tại Nhật Bản không còn rào cản ngôn ngữ. Quy trình số hóa 100% không cần điền phiếu giấy phức tạp.
+      </p>
+
+      <div class="how-it-works-grid">
+        <article class="how-step-card">
+          <div class="how-step-num">1</div>
+          <h3>1. Đặt dịch vụ trực tuyến</h3>
+          <p>Chọn sân bay (Haneda, Narita, Kansai), khách sạn hoặc ga tàu Shinkansen. Đặt chỗ chỉ trong 2 phút với giá cước niêm yết rõ ràng, không lo bất đồng ngôn ngữ.</p>
+        </article>
+
+        <article class="how-step-card">
+          <div class="how-step-num">2</div>
+          <h3>2. Gửi vali tại sảnh hoặc quầy</h3>
+          <p>Xuất trình mã đặt chỗ trên điện thoại tại sảnh lễ tân khách sạn hoặc quầy Yamato đối tác. Nhân viên quét mã xác thực và gắn thẻ niêm phong điện tử an toàn.</p>
+        </article>
+
+        <article class="how-step-card">
+          <div class="how-step-num">3</div>
+          <h3>3. Thảnh thơi vi vu ngắm núi Phú Sĩ</h3>
+          <p>Lên tàu siêu tốc Shinkansen rảnh tay, nhâm nhi cơm hộp Ekiben ngắm núi Phú Sĩ hoặc vi vu tham quan đền chùa. Hành lý sẽ đợi sẵn trong phòng khách sạn kế tiếp!</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Use Cases & Shinkansen Highlight -->
+    <section class="bounce-usecase-section" id="usecases" aria-labelledby="usecase-heading">
+      <div style="margin-bottom: 2rem;">
+        <h2 class="bounce-section-title" id="usecase-heading">Du khách sử dụng VALIGO thế nào tại Nhật Bản?</h2>
+        <p style="color: var(--bounce-gray-700); font-size: 1rem;">
+          Chọn phong cách du lịch của bạn để xem việc gửi hành lý trước mang lại sự tự do ra sao:
+        </p>
+      </div>
+
+      <!-- Tabs Row -->
+      <div class="usecase-tabs-row" role="tablist">
+        <button class="usecase-tab active" data-usecase="railpass" role="tab">🚅 Tàu Shinkansen & Vé JR Pass</button>
+        <button class="usecase-tab" data-usecase="ryokan" role="tab">🏯 Ryokan suối nước nóng & Phố cổ</button>
+        <button class="usecase-tab" data-usecase="ski" role="tab">⛷️ Trượt tuyết Hokkaido & Hakuba</button>
+        <button class="usecase-tab" data-usecase="island" role="tab">🏝️ Khám phá biển đảo Okinawa</button>
+      </div>
+
+      <!-- Tab Content Grid -->
+      <div class="usecase-content-grid">
+        <div>
+          <h3 id="usecaseTitle" style="font-size: 1.8rem; font-weight: 800; color: var(--bounce-dark); margin-bottom: 1rem; line-height: 1.2;">
+            Hành trình Shinkansen & Vé JR Pass thảnh thơi
+          </h3>
+          <p id="usecaseDesc" style="color: var(--bounce-gray-700); font-size: 1.05rem; line-height: 1.6; margin-bottom: 1.5rem;">
+            Bạn sở hữu vé tàu JR Pass và muốn khám phá từ Tokyo đến Kyoto, Osaka và Hiroshima. Bưng bê vali cồng kềnh qua các cầu thang ga đông đúc và nhét vali vào khoang tàu hẹp là nỗi ám ảnh. Gửi vali từ khách sạn Tokyo đến thẳng khách sạn Osaka, bạn chỉ cần mang balo nhỏ ngắm núi Phú Sĩ và thưởng thức cơm hộp Ekiben trên tàu Shinkansen!
+          </p>
+
+          <div class="usecase-feature-list">
+            <div class="usecase-feature-item">
+              <span style="color:var(--bounce-primary);">📍</span>
+              <span id="usecaseRoute1">Khách sạn Tokyo ➔ Khách sạn Osaka Dotonbori</span>
+            </div>
+            <div class="usecase-feature-item">
+              <span style="color:var(--bounce-primary);">📍</span>
+              <span id="usecaseRoute2">Ga Kyoto ➔ Ryokan truyền thống Hiroshima</span>
+            </div>
+            <div class="usecase-feature-item">
+              <span style="color:var(--bounce-green);">✓</span>
+              <span>Giao hỏa tốc cùng ngày hoặc qua đêm bảo đảm 100%</span>
+            </div>
+            <div class="usecase-feature-item">
+              <span style="color:var(--bounce-green);">✓</span>
+              <span>Bảo hiểm bảo vệ tới ¥1,000,000 (~170 triệu VNĐ)</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="usecase-img-box">
+          <img src="assets/japan-shinkansen.jpg" alt="Du khách thảnh thơi ngồi trên tàu Shinkansen ngắm núi Phú Sĩ ngoài cửa sổ không lo vướng bận vali" width="600" height="380">
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Delivery Routes Grid -->
+    <section class="bounce-section" id="routes" aria-labelledby="routes-heading">
+      <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:2.5rem; flex-wrap:wrap; gap:1rem;">
+        <div>
+          <h2 class="bounce-section-title" id="routes-heading" style="margin-bottom:0.25rem;">Các tuyến giao hành lý trọng điểm tại Nhật</h2>
+          <p style="color:var(--bounce-gray-700); font-size:1rem;">Các hành lang du lịch được du khách quốc tế và người Việt ưa chuộng nhất</p>
+        </div>
+        <span style="font-size:0.85rem; color:var(--bounce-gray-600); font-weight:600;">Cập nhật biểu giá 2026 • Cam kết đúng hẹn</span>
+      </div>
+
+      <div class="routes-grid">
+        
+        <!-- Route 1 -->
+        <article class="route-card">
+          <div>
+            <div class="route-header">
+              <h3 class="route-title">Tokyo Station ➔ Kyoto Station</h3>
+              <div class="route-rating">★ 4.9 <span style="color:var(--bounce-gray-600); font-weight:400;">(2,104)</span></div>
+            </div>
+            <div class="route-meta">
+              <div>🧳 Áp dụng vali xách tay & ký gửi đến 30kg</div>
+              <div>⏱️ Giao qua đêm 24h hoặc hỏa tốc cùng ngày</div>
+              <div>🏯 Giao tận sảnh Ryokan Gion hoặc khách sạn phố</div>
+            </div>
+          </div>
+          <div class="route-footer">
+            <div>
+              <div style="font-size:0.75rem; color:var(--bounce-gray-600);">Giá trọn gói từ</div>
+              <div class="route-price-tag dynamic-price" data-jpy="2090">¥2,090</div>
+            </div>
+            <button class="btn-book-route" data-route="tokyo-kyoto">Đặt Tuyến Này</button>
+          </div>
+        </article>
+
+        <!-- Route 2 -->
+        <article class="route-card">
+          <div>
+            <div class="route-header">
+              <h3 class="route-title">Sân bay Haneda (HND) ➔ Shinjuku / Shibuya</h3>
+              <div class="route-rating">★ 4.9 <span style="color:var(--bounce-gray-600); font-weight:400;">(1,890)</span></div>
+            </div>
+            <div class="route-meta">
+              <div>⚡ Giao hỏa tốc Same-Day (nhận trước 11:00 AM)</div>
+              <div>⏱️ Giao trong 3 - 4 giờ</div>
+              <div>✈️ Gửi vali tại ga T3, tự do đi phố điện tử Akihabara</div>
+            </div>
+          </div>
+          <div class="route-footer">
+            <div>
+              <div style="font-size:0.75rem; color:var(--bounce-gray-600);">Giá trọn gói từ</div>
+              <div class="route-price-tag dynamic-price" data-jpy="2500">¥2,500</div>
+            </div>
+            <button class="btn-book-route" data-route="haneda-shinjuku">Đặt Tuyến Này</button>
+          </div>
+        </article>
+
+        <!-- Route 3 -->
+        <article class="route-card">
+          <div>
+            <div class="route-header">
+              <h3 class="route-title">Sân bay Narita (NRT) ➔ Trung tâm Tokyo</h3>
+              <div class="route-rating">★ 4.8 <span style="color:var(--bounce-gray-600); font-weight:400;">(1,420)</span></div>
+            </div>
+            <div class="route-meta">
+              <div>✈️ Quầy dịch vụ Yamato Terminal 1 & 2</div>
+              <div>⏱️ Giao trước giờ check-in khách sạn</div>
+              <div>🚅 Đi tàu cao tốc Skyliner nhẹ tênh</div>
+            </div>
+          </div>
+          <div class="route-footer">
+            <div>
+              <div style="font-size:0.75rem; color:var(--bounce-gray-600);">Giá trọn gói từ</div>
+              <div class="route-price-tag dynamic-price" data-jpy="2800">¥2,800</div>
+            </div>
+            <button class="btn-book-route" data-route="narita-tokyo">Đặt Tuyến Này</button>
+          </div>
+        </article>
+
+        <!-- Route 4 -->
+        <article class="route-card">
+          <div>
+            <div class="route-header">
+              <h3 class="route-title">Kyoto Ryokan ➔ Osaka Dotonbori</h3>
+              <div class="route-rating">★ 4.9 <span style="color:var(--bounce-gray-600); font-weight:400;">(940)</span></div>
+            </div>
+            <div class="route-meta">
+              <div>⚡ Tuyến Kansai Express nội vùng</div>
+              <div>⏱️ Giao trong 4 - 5 giờ</div>
+              <div>🦌 Thảnh thơi ghé thăm công viên hươu Nara rảnh tay</div>
+            </div>
+          </div>
+          <div class="route-footer">
+            <div>
+              <div style="font-size:0.75rem; color:var(--bounce-gray-600);">Giá trọn gói từ</div>
+              <div class="route-price-tag dynamic-price" data-jpy="2100">¥2,100</div>
+            </div>
+            <button class="btn-book-route" data-route="kyoto-osaka">Đặt Tuyến Này</button>
+          </div>
+        </article>
+
+        <!-- Route 5 -->
+        <article class="route-card">
+          <div>
+            <div class="route-header">
+              <h3 class="route-title">Osaka Station ➔ Hiroshima / Đảo Miyajima</h3>
+              <div class="route-rating">★ 4.7 <span style="color:var(--bounce-gray-600); font-weight:400;">(520)</span></div>
+            </div>
+            <div class="route-meta">
+              <div>🧳 Đã bao gồm 2 kiện hành lý ký gửi</div>
+              <div>⏱️ Giao trong 22 giờ</div>
+              <div>⛩️ Giao thẳng khách sạn gần cổng Torii nổi tiếng</div>
+            </div>
+          </div>
+          <div class="route-footer">
+            <div>
+              <div style="font-size:0.75rem; color:var(--bounce-gray-600);">Giá trọn gói từ</div>
+              <div class="route-price-tag dynamic-price" data-jpy="2949">¥2,949</div>
+            </div>
+            <button class="btn-book-route" data-route="osaka-hiroshima">Đặt Tuyến Này</button>
+          </div>
+        </article>
+
+        <!-- Route 6 -->
+        <article class="route-card">
+          <div>
+            <div class="route-header">
+              <h3 class="route-title">New Chitose (CTS) ➔ Tokyo Station</h3>
+              <div class="route-rating">★ 5.0 <span style="color:var(--bounce-gray-600); font-weight:400;">(310)</span></div>
+            </div>
+            <div class="route-meta">
+              <div>⛷️ Chấp nhận thiết bị trượt tuyết Ski & Snowboard</div>
+              <div>⏱️ Vận chuyển liên đảo trong 48 giờ</div>
+              <div>❄️ Từ khu nghỉ tuyết Hokkaido về khách sạn Tokyo</div>
+            </div>
+          </div>
+          <div class="route-footer">
+            <div>
+              <div style="font-size:0.75rem; color:var(--bounce-gray-600);">Giá trọn gói từ</div>
+              <div class="route-price-tag dynamic-price" data-jpy="5886">¥5,886</div>
+            </div>
+            <button class="btn-book-route" data-route="sapporo-tokyo">Đặt Tuyến Này</button>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- Customer Reviews / Testimonials -->
+    <section class="bounce-section" id="reviews" style="background:#f7f7fc; border-radius:32px;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:2.5rem; flex-wrap:wrap; gap:1rem;">
+        <div>
+          <h2 class="bounce-section-title" style="margin-bottom:0.25rem;">Trải nghiệm từ du khách</h2>
+          <p style="color:var(--bounce-gray-700); font-size:1rem;">Hơn 12.000+ du khách đã trải nghiệm hành trình du lịch Nhật Bản nhẹ tênh</p>
+        </div>
+        <div style="display:flex; align-items:center; gap:0.5rem; font-size:1.1rem; font-weight:800;">
+          <span style="color:#f59e0b;">★★★★★</span>
+          <span>4.9 / 5.0 Đánh Giá Xuất Sắc</span>
+        </div>
+      </div>
+
+      <div class="reviews-grid">
+        
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">
+            "Dịch vụ tuyệt vời cho gia đình mình khi đi từ Tokyo sang Kyoto! Gửi 3 kiện vali lớn tại sảnh khách sạn Tokyo lúc 9h sáng, đi tàu Shinkansen chỉ cần mang balo nhỏ. Đến chiều nhận phòng tại Kyoto thì vali đã được nhân viên đưa sẵn vào phòng."
+          </p>
+          <div class="review-author-row">
+            <div class="review-avatar">TH</div>
+            <div class="review-author-info">
+              <h5>Trần Hùng</h5>
+              <p>Tokyo ➔ Kyoto • 3 kiện vali</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">
+            "Đáp chuyến bay sáng tại sân bay Haneda, mình gửi vali ngay tại quầy và đi thẳng tới đền Asakusa chụp ảnh kimono cả ngày. Không phải kéo lê bánh xe vali trên đường phố Nhật gồ ghề. Rất đáng đồng tiền!"
+          </p>
+          <div class="review-author-row">
+            <div class="review-avatar" style="background:#07875a;">MA</div>
+            <div class="review-author-info">
+              <h5>Mai Anh</h5>
+              <p>Sân bay Haneda ➔ Shinjuku • 2 kiện</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">
+            "Đặt qua VALIGO nhanh hơn nhiều so với điền phiếu giấy tiếng Nhật của Yamato thông thường. Giao diện có tiếng Việt, hiển thị giá rõ ràng theo cả Yên và VNĐ, có mã tracking và tem niêm phong an tâm tuyệt đối."
+          </p>
+          <div class="review-author-row">
+            <div class="review-avatar" style="background:#ea580c;">NQ</div>
+            <div class="review-author-info">
+              <h5>Nguyễn Quang</h5>
+              <p>Kyoto ➔ Osaka • 2 kiện</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Frequently Asked Questions -->
+    <section class="bounce-section" id="faq" aria-labelledby="faq-heading">
+      <div style="text-align:center; margin-bottom:3rem;">
+        <h2 class="bounce-section-title" id="faq-heading">Câu hỏi thường gặp về Tuyến Nhật Bản</h2>
+        <p class="bounce-section-subtitle" style="margin:0 auto;">
+          Những điều cần biết khi gửi hành lý liên tỉnh và sân bay tại Nhật Bản.
+        </p>
+      </div>
+
+      <div class="faq-list">
+        
+        <div class="faq-item open">
+          <div class="faq-question">
+            <span>Chi phí giao nhận hành lý tại Nhật Bản là bao nhiêu?</span>
+            <span class="faq-icon">▼</span>
+          </div>
+          <div class="faq-answer">
+            Giá dịch vụ bắt đầu từ ¥2,090/kiện (~350.000 VNĐ) cho các tuyến liên tỉnh phổ biến như Tokyo ➔ Kyoto hoặc Osaka. Giao hỏa tốc trong ngày từ sân bay Haneda / Narita về khách sạn dao động từ ¥2,500 đến ¥2,800. Tất cả đơn đặt đều bao gồm gói bảo hiểm hàng hóa lên tới ¥1,000,000 (~170.000.000 VNĐ) và miễn phí hủy trước 1 giờ.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>Tôi có thể gửi hành lý thẳng về khách sạn, Airbnb hay Ryokan không?</span>
+            <span class="faq-icon">▼</span>
+          </div>
+          <div class="faq-answer">
+            Có! Chúng tôi giao trực tiếp đến quầy lễ tân của tất cả các khách sạn và Ryokan truyền thống có người trực tại Nhật Bản. Bạn chỉ cần điền tên khách sạn và tên người đặt phòng. Đối với căn hộ Airbnb tự quản lý không có lễ tân, bạn có thể chọn điểm nhận tại quầy chi nhánh Yamato Transport hoặc tủ khóa thông minh gần nhất.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>Dịch vụ liên kết với mạng lưới Yamato Transport (Takkyubin) như thế nào?</span>
+            <span class="faq-icon">▼</span>
+          </div>
+          <div class="faq-answer">
+            VALIGO tích hợp trực tiếp với mạng lưới chuyển phát hàng đầu Nhật Bản Kuroneko Yamato (hãng vận chuyển chú mèo đen quen thuộc). Bạn được hưởng độ chính xác giờ giấc tuyệt đối của dịch vụ nội địa Nhật Bản kết hợp cùng giao diện tiếng Việt/tiếng Anh trực quan, thanh toán trực tuyến linh hoạt và hỗ trợ khách hàng 24/7.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>Tôi cần đặt trước dịch vụ bao lâu?</span>
+            <span class="faq-icon">▼</span>
+          </div>
+          <div class="faq-answer">
+            Đối với giao hỏa tốc sân bay trong ngày, bạn có thể đặt và gửi hành lý trước 10:30 sáng. Đối với các tuyến liên tỉnh (như Tokyo ➔ Kyoto/Osaka), chúng tôi khuyến nghị đặt trước 24 giờ. Hành lý gửi vào buổi sáng thường sẽ có mặt tại khách sạn điểm đến vào chiều ngày kế tiếp.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>Kích thước và trọng lượng hành lý được chấp nhận?</span>
+            <span class="faq-icon">▼</span>
+          </div>
+          <div class="faq-answer">
+            Hệ thống chấp nhận vali xách tay (carry-on), vali cỡ trung, vali cỡ đại (tối đa 30kg / tổng kích thước 3 chiều 160-200cm), cũng như túi đồ chơi golf, ván trượt tuyết Ski & Snowboard chuyên dụng.
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Interactive Booking Confirmation Modal -->
+    <div id="bounceBookingModal" style="position:fixed; inset:0; background:rgba(10,10,30,0.7); backdrop-filter:blur(6px); display:none; align-items:center; justify-content:center; z-index:9999; padding:1rem;">
+      <div style="background:#fff; border-radius:24px; max-width:540px; width:100%; padding:2rem; box-shadow:0 20px 50px rgba(0,0,0,0.3); position:relative;">
+        
+        <button id="closeBounceModal" style="position:absolute; top:1.25rem; right:1.25rem; border:none; background:none; font-size:1.5rem; cursor:pointer; color:#6c6c85;">&times;</button>
+        
+        <div id="bounceModalBody">
+          <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:1rem;">
+            <div class="bounce-logo-b" style="width:32px; height:32px; font-size:1rem;">V</div>
+            <span style="font-weight:800; font-size:1.2rem; color:var(--bounce-primary);">Xác Nhận Đặt Giao Tuyến Nhật Bản</span>
+          </div>
+
+          <div style="background:#f7f7fc; border-radius:12px; padding:1.25rem; margin-bottom:1.5rem; font-size:0.9rem;">
+            <div style="display:flex; justify-content:space-between; margin-bottom:0.6rem;">
+              <span style="color:#6c6c85;">Điểm gửi (Tại Nhật):</span>
+              <strong id="modalOriginText">Ga Tokyo / Khách sạn Shinjuku</strong>
+            </div>
+            <div style="display:flex; justify-content:space-between; margin-bottom:0.6rem;">
+              <span style="color:#6c6c85;">Điểm nhận:</span>
+              <strong id="modalDestText">Ryokan Phố Cổ Gion Kyoto</strong>
+            </div>
+            <div style="display:flex; justify-content:space-between; margin-bottom:0.6rem;">
+              <span style="color:#6c6c85;">Thời gian gửi:</span>
+              <strong id="modalDateText">Sáng mai</strong>
+            </div>
+            <div style="display:flex; justify-content:space-between; margin-bottom:0.6rem;">
+              <span style="color:#6c6c85;">Số lượng:</span>
+              <strong id="modalBagsText">2 Kiện Hành Lý</strong>
+            </div>
+            <div style="display:flex; justify-content:space-between; border-top:1px solid #dfdfe5; padding-top:0.6rem; margin-top:0.6rem; font-size:1.1rem;">
+              <span>Tổng chi phí ước tính:</span>
+              <strong id="modalPriceTotal" style="color:var(--bounce-primary);">¥4,180</strong>
+            </div>
+          </div>
+
+          <div style="font-size:0.8rem; color:#6c6c85; margin-bottom:1.5rem;">
+            ✓ Đã bao gồm bảo hiểm hàng hóa bồi thường tới ¥1,000,000.<br>
+            ✓ Miễn phí thay đổi hoặc hủy trước giờ bàn giao 1 tiếng.
+          </div>
+        </div>
+
+        <div id="bounceModalFooter" style="display:flex; gap:0.75rem;">
+          <button class="btn-bounce-outline" onclick="document.getElementById('bounceBookingModal').style.display='none'" style="flex:1;">Hủy bỏ</button>
+          <button class="btn-bounce-primary" id="confirmBounceBooking" style="flex:2; justify-content:center;">Xác Nhận Đặt Chỗ</button>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bounce-footer">
+    <div class="bounce-footer-inner">
+      <div class="footer-top-grid">
+        <div>
+          <div class="bounce-logo-wrapper" style="color:#fff; margin-bottom:1rem;">
+            <div class="bounce-logo-b">V</div>
+            <span>VALIGO JAPAN</span>
+          </div>
+          <p style="color:var(--bounce-gray-600); font-size:0.9rem; line-height:1.5; max-width:320px;">
+            Nền tảng giao nhận hành lý du lịch thông minh toàn diện. Giúp du khách khám phá Nhật Bản và Việt Nam nhẹ tênh, thảnh thơi và an toàn tuyệt đối.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Các Thành Phố Trọng Điểm</h4>
+          <ul>
+            <li><a href="#">Giao hành lý Tokyo</a></li>
+            <li><a href="#">Chuyển vali Kyoto</a></li>
+            <li><a href="#">Giao nhận hành lý Osaka</a></li>
+            <li><a href="#">Vận chuyển ván trượt tuyết Sapporo</a></li>
+            <li><a href="#">Quầy dịch vụ Fukuoka & Nagoya</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Dịch Vụ Nổi Bật</h4>
+          <ul>
+            <li><a href="#">Giao hành lý Shinkansen Bullet Train</a></li>
+            <li><a href="#">Hỏa tốc sân bay Haneda về khách sạn</a></li>
+            <li><a href="#">Dịch vụ sân bay quốc tế Narita</a></li>
+            <li><a href="#">Chuyển phát Ryokan suối nước nóng</a></li>
+            <li><a href="vietnam.html">🇻🇳 Tuyến Việt Nam (Hà Nội, Đà Nẵng, HCM)</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Thông Tin</h4>
+          <ul>
+            <li><a href="#">Giới thiệu VALIGO Japan</a></li>
+            <li><a href="#">Mạng lưới đối tác Yamato Transport</a></li>
+            <li><a href="#">Chính sách bảo hiểm ¥1,000,000</a></li>
+            <li><a href="#">Hỗ trợ khách hàng 24/7</a></li>
+            <li><a href="vietnam.html">🇻🇳 Giao Diện Tuyến Việt Nam</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom-row">
+        <div>© 2026 VALIGO Platform. Bản quyền dịch vụ Tuyến Nhật Bản & Tuyến Việt Nam.</div>
+        <div style="display:flex; gap:1.5rem;">
+          <a href="vietnam.html" style="color:var(--bounce-zest); font-weight:700;">➔ Chuyển Sang Giao Diện Tuyến Việt Nam</a>
+          <a href="#">Chính sách bảo mật</a>
+          <a href="#">Điều khoản sử dụng</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/japan.js"></script>
+  <script src="js/motion.js"></script>
+</body>
+</html>
