@@ -40,10 +40,6 @@ VALIGO giải phóng đôi tay du khách trong mọi chuyến đi. Không còn n
   * Hỗ trợ đa ngôn ngữ không lo rào cản ngôn ngữ.
   * Bảo hiểm bồi thường tới ¥1,000,000 (~170.000.000 VNĐ).
 
-### 3. ✨ Màn Hình Tải Trang Điện Ảnh (Cinematic Preloader)
-* Hiển thị logo chính thức của **VALIGO** với hiệu ứng quét ánh kim (metallic sheen sweep), vầng hào quang chuyển động và chuyển động nâng hạ floating.
-* Mô phỏng lộ trình giao nhận thời gian thực (xe van điện tại VN / tàu Shinkansen tại Nhật Bản).
-
 ---
 
 ## 🛠️ Hướng Dẫn Cài Đặt & Chạy Cục Bộ
